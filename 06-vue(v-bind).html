@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aula 06 (v-bind)</title>
+    <style media="screen">
+        .red {
+            color: red
+        }
+        .green {
+            color: green
+        }
+        .blue {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        <p v-bind:class="classe">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas facere, ducimus non deserunt at nulla hic nisi quasi veniam fuga nesciunt cum, officiis dicta est eveniet iste, dolorem impedit earum.</p>
+        <img v-bind:src="imagem" v-bind:alt="alt" />
+    </div>
+
+    <!-- <script src="http://unpkg.com/vue"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Aula 06 - Vuejs do Jeito Ninja!',
+                imagem: 'https://i.ytimg.com/vi/QN7l3ydXvx0/maxresdefault.jpg',
+                alt: 'Vuejs os awesome!',
+                classe: 'blue'
+            }
+        });
+    </script>
+
+</body>
+
+</html>

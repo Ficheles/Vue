@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aula 03 (v-show, v-if, v-else)</title>
+</head>
+<body>
+    <div id="app">
+        <h1 >{{ titulo }}</h1>
+        <div v-if='usuario.id == 1'>
+            Id: {{usuario.id}}, <br>
+            Nome: {{usuario.nome}}, <br>
+            Profissão: {{usuario.profissao}}            
+        </div>
+        <div v-else>Nenhum usuario com Id = 1.</div>
+    </div>
+        
+    <!-- <script src="http://unpkg.com/vue"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Aula 03 - Vuejs do Jeito Ninja!',
+                usuario: {
+                    id: 2,
+                    nome: 'Jon Snow',
+                    profissao: 'Ator'
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>            

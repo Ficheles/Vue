@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aula 12 (componetes)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        <menu-bar></menu-bar>
+    </div>
+
+    <template id="menu">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </template>
+    <!-- <script src="http://unpkg.com/vue"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script>
+        Vue.component('menu-bar', {
+            template: "#menu"
+        });
+        var app = new Vue({
+            el: '#app',
+
+            data: {
+                titulo: 'Aula 12 - Vuejs do Jeito Ninja!',
+            },
+            
+        });
+    </script>
+
+</body>
+
+</html>

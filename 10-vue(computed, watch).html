@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aula 10 (computed, watch)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ titulo }}</h1>
+        {{ fullName }}
+    </div>
+
+    <!-- <script src="http://unpkg.com/vue"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                titulo: 'Aula 10 - Vuejs do Jeito Ninja!',
+                firstName: '',
+                lastName: '',
+                // fullName: ''
+            },
+            
+            computed: {
+                fullName() {
+                    return this.firstName + ' ' + this.lastName;
+                }
+            },
+
+            watch: {
+                // firstName(newValue) {
+                //     this.fullName = newValue + ' ' + this.lastName;
+                // },
+
+                // lastName(newValue) {
+                //     this.fullName = this.firstName + ' ' + newValue;
+                // }                
+            },
+
+            methods: {}
+        });
+    </script>
+
+</body>
+
+</html>

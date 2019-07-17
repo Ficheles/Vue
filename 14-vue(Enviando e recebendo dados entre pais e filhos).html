@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aula 14 (Enviando e recebendo dados entre pais e filhos)</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <nav-bar></nav-bar>
+        <h1>{{ titulo }}</h1>
+    </div>
+
+    <template id="nav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <menu-bar v-bind:itens="topNav"
+                          v-on:emit-click="getLink"></menu-bar>
+            </div>
+        </nav>
+    </template>
+
+    <template id="menu">
+        <ul class="navbar-nav">
+            <li v-for="(item, index) in itens" class="nav-item">
+                <a v-on:click.stop.prevent="emitClick(index)"
+                   class="nav-link" href="#"> {{ item.label }}</a>
+            </li>
+        </ul>
+    </template>
+    <!-- <script src="http://unpkg.com/vue"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script>
+        Vue.component('nav-bar', {
+            template: '#nav',
+            data() {
+              return {
+                topNav: [{label: 'Home'}, {label: 'Link'}, {label: 'Disabled'}]
+              }
+            },
+            methods: {
+              getLink(index) {
+                alert(this.topNav[index].label);
+              }
+            }
+        });
+
+        Vue.component('menu-bar', {
+            template: '#menu',
+            props: {
+                itens: {
+                    type: Array,
+                    required: true
+                }
+            },
+            methods: {
+                emitClick(index) {
+                    this.$emit('emit-click', index)
+                }
+            }
+        });
+
+        var app = new Vue({
+            el: '#app',
+
+            data: {
+                titulo: 'Aula 14 - Vuejs do Jeito Ninja!',
+
+            },
+
+        });
+    </script>
+
+</body>
+
+</html>

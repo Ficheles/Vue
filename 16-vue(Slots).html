@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aula 16 (Slots)</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ titulo }}</h1>
+    <div class="container">
+      <card>
+          <h4 slot="title" class="card-title">Card title</h4>
+          <template slot="text">
+            <p class="card-text">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="card-text">From its medieval origins to the digital era, learn everything there is to know about the ubiquitous lorem ipsum passage.</p>
+          </template>
+          <a slot="action" href="#" class="btn btn-primary">Go somewhere</a>
+      </card>
+    </div>
+
+  </div>
+
+  <template id="card">
+    <div class="card">
+      <img src="http://via.placeholder.com/350x150" alt="" class="card-img-top img-responsive">
+      <div class="card-block">
+        <slot name="title"></slot>
+        <slot name="text"></slot>
+        <slot name="action"></slot>
+      </div>
+    </div>
+  </template>
+
+  <!-- <script src="http://unpkg.com/vue"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <script>
+
+    Vue.component('card', {
+      template: '#card',
+      data() {
+        return {
+          title: '',
+        }
+      },
+    });
+
+    //var eventBus = new Vue();
+    Vue.prototype.$eventHub = new Vue();
+
+    var app = new Vue({
+      el: '#app',
+
+      data: {
+        titulo: 'Aula 16 - Vuejs do Jeito Ninja!',
+      }
+    });
+  </script>
+
+</body>
+
+</html>

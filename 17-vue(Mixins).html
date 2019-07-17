@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Aula 17 (Mixins)</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{ titulo }}</h1>
+    <button v-on:click.stop.prevent="getUsers()" class="btn btn-success">GET USERS</button>
+  </div>
+
+
+  <!-- <script src="http://unpkg.com/vue"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <script>
+
+    var mixin = {
+      created() {
+        console.log('hello vue from mixin');
+      },
+
+      methods: {
+        getUsers() {
+          // rotina de programação 
+          // localizar usuários
+          console.log('get users from mixin');
+        }
+      }
+    }
+
+    var app = new Vue({
+      el: '#app',
+
+      mixins: [mixin],
+      
+      created() {
+        console.log('hello vue from vue');
+      },
+
+      data: {
+        titulo: 'Aula 17 - Vuejs do Jeito Ninja!',
+      },
+
+      methods: {
+        getUsers() {
+          // rotina de programação 
+          // localizar usuários
+          console.log('get users from vue');
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
